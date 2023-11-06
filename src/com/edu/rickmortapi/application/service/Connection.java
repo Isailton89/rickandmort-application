@@ -8,7 +8,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class Connection {
-    public Address sendAddress(String addressRequest) {
+    public AddressCharacter sendAddress(String addressRequest) {
         URI addressUrl = URI.create(addressRequest);
 
         HttpRequest request = HttpRequest.newBuilder()
@@ -19,7 +19,7 @@ public class Connection {
             HttpResponse<String> response = HttpClient
                     .newHttpClient()
                     .send(request, HttpResponse.BodyHandlers.ofString());
-            return new Gson().fromJson(response.body(), Address.class);
+            return new Gson().fromJson(response.body(), AddressCharacter.class);
         } catch (Exception e) {
             throw new RuntimeException("Não consegui acessar o endereço");
         }
